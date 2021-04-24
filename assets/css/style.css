@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 15px;
+    line-height: 1.6;
+    color: #000;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+.header {
+    width: 100%;
+    padding-top: 30px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header__logo {
+    font-size: 30px;
+    font-weight: 700;
+    font-family: Roboto;
+    text-align: center;
+}
+
+.intro {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+
+
+    background-color: #faf0e6;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.chess{
+    margin-top: 9vh;
+    display: flex;
+    text-align: center;
+}
+
+.chess td{
+    width: 20vh;
+    height:20vh;
+    text-align: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    border-radius: 20px;
+    border: 3px solid #000;
+}
+
+.chess td:hover{
+    background-color: #999;
+}
+
+.chess th{
+    padding: .5em;  
+    margin:0;
+}
+
+.board{
+    text-align: center; 
+    justify-content: center;
+}
+
+.black{
+    background: #6786b8;
+}
+
+.white{
+    background: #d1dced;
+}

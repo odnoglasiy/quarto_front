@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang = 'en'>
+    <head>
+        <script src="index.js"></script>
+        <meta charset = 'UTF-8'>
+        <link rel = "stylesheet" href="assets/css/style.css">
+        <title>Quarto</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+    </head>
+    <body onload="set_figures()">
+        <div class="header">
+            <div class="container">
+                <div class="header__inner">
+                    <div class="header__logo">QUARTO</div>
+                </div>
+            </div>
+        </div>
+<div class="intro">
+    <table class="chess">
+        <tr>
+            <th></th>
+            <th>00</th>
+            <th>01</th>
+        </tr>
+        <tr>
+            <th>00</th>
+            <td id="0000" class="black" onclick="give_figure()"></td>
+            <td id="0100" class="black"></td> 
+        </tr>		
+        <tr>
+            <th>01</th>
+            <td id="0001" class="black"></td>
+            <td id="0101" class="black"></td>
+        </tr>	
+        <tr>
+            <th>10</th>
+            <td id="0010" class="black"></td>
+            <td id="0110" class="black"></td>
+        </tr>	
+        <tr>
+            <th>11</th>
+            <td id="0011" class="black"></td>
+            <td id="0111" class="black"></td>
+        </tr>	
+    </table>
+        <div class="board">
+            <table class="chess">
+                <tr>
+                    <th></th>
+                    <th>a</th>
+                    <th>b</th>
+                    <th>c</th>
+                    <th>d</th>
+                   </tr>
+                <tr>
+                    <th>1</th>
+                    <td class="black" id="a1"></td>
+                    <td class="white" id="b1"></td>
+                    <td class="black" id="c1"></td>
+                    <td class="white" id="d1"></td>
+                    <th>1</th>
+                </tr>		
+                <tr>
+                    <th>2</th>
+                    <td class="white" id="a2"></td>
+                    <td class="black" id="b2"></td>
+                    <td class="white" id="c2"></td>
+                    <td class="black" id="d2"></td>
+                    <th>2</th>
+                </tr>	
+                <tr>
+                    <th>3</th>
+                    <td class="black" id="a3"></td>
+                    <td class="white" id="b3"></td>
+                    <td class="black" id="c3"></td>
+                    <td class="white" id="d3"></td>
+                    <th>3</th>
+                </tr>	
+                <tr>
+                    <th>4</th>
+                    <td class="white" id="a4"></td>
+                    <td class="black" id="b4"></td>
+                    <td class="white" id="c4"></td>
+                    <td class="black" id="d4"></td>
+                    <th>4</th>
+                </tr>	
+            </table>
+        </div>
+        <table class="chess">
+            <tr>
+                <th>10</th>
+                <th>11</th>
+               </tr>
+            <tr>
+                <td id="1000" class="white"></td>
+                <td id="1100" class="white"></td>
+                <th>00</th>
+            </tr>		
+            <tr>
+                <td id="1001" class="white"></td>
+                <td id="1101" class="white"></td>
+                <th>01</th>
+            </tr>	
+            <tr>
+                <td id="1010" class="white"></td>
+                <td id="1110" class="white"></td>
+                <th>10</th>
+            </tr>	
+            <tr>
+                <td id="1011" class="white"></td>
+                <td id="1111" class="white"></td>
+                <th>11</th>
+            </tr>	
+        </table>
+</div>
+           
+    </body>
+</html>
