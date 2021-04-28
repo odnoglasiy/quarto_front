@@ -22,7 +22,6 @@ body {
 .header {
     width: 100%;
     padding-top: 30px;
-
     position: absolute;
     top: 0;
     left: 0;
@@ -34,9 +33,29 @@ body {
     font-size: 30px;
     font-weight: 700;
     font-family: Roboto;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
 }
 
+.rules{
+    display: inline-flex;
+    float: right;
+    background-color: #d1dced;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding: 10px 20px 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    margin: auto 10px ;
+    font-size: 17px;
+    font-weight: 700;
+
+}
+
+.rules:hover{
+    transition: background .1s linear, color .1s linear;
+    background-color: #6786b8;
+    color: white;
+}
 .intro {
     display: flex;
     flex-direction: row;
@@ -45,7 +64,7 @@ body {
     height: 100vh;
 
 
-    background-color: #faf0e6;
+    background-color: #e7fcff;
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -67,7 +86,8 @@ body {
 }
 
 .chess td:hover{
-    background-color: #999;
+    transition: background .1s linear, color .1s linear;
+    background-color: #d5ffd9;
 }
 
 .chess th{

@@ -14,6 +14,7 @@
             <div class="container">
                 <div class="header__inner">
                     <div class="header__logo">QUARTO</div>
+                    <button class="rules" onclick="rules()">Rules</button>
                 </div>
             </div>
         </div>
@@ -26,7 +27,7 @@
         </tr>
         <tr>
             <th>00</th>
-            <td id="0000" class="black" onclick="give_figure()"></td>
+            <td id="0000" class="black"></td>
             <td id="0100" class="black"></td> 
         </tr>		
         <tr>
@@ -46,7 +47,7 @@
         </tr>	
     </table>
         <div class="board">
-            <table class="chess">
+            <table id= "chess_board" class="chess">
                 <tr>
                     <th></th>
                     <th>a</th>
@@ -56,7 +57,7 @@
                    </tr>
                 <tr>
                     <th>1</th>
-                    <td class="black" id="a1"></td>
+                    <td class="black" id="a1" onclick="make_move()"></td>
                     <td class="white" id="b1"></td>
                     <td class="black" id="c1"></td>
                     <td class="white" id="d1"></td>
