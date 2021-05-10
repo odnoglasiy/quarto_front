@@ -47,7 +47,20 @@ function make_move(cell_id){
     }
 }
 
-function rules(){
-    window.open(this.href,'targetWindow',`scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
-    width=0,height=0,left=-1000,top=-1000`)
+ function rules(){
+    /*window.open(this.href,'targetWindow',`scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+    width=0,height=0,left=-1000,top=-1000`)*/
+    var url = "http://localhost:8080/game/new"
+    //var request = new XMLHttpRequest();
+    const data = {single: {player : 'Pirate'}}
+    const response = fetch(url, {
+        method: 'post',
+        mode: "no-cors",
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        
+      })
+
 }
