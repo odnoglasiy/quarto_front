@@ -39,9 +39,9 @@ async function start_game(){
       
       let commits = await response.json();
       game_id = commits.gameId;
-      if(commits.firstPlayer) alert( commits.firstPlayer + " moves first");
+      if(commits.firstPlayer) console.log( commits.firstPlayer + " moves first");
       else {
-          alert("Computer moves first");
+        console.log("Computer moves first");
           active_figure_id="figure"+commits.nextMove.piece;
           make_move("cell"+commits.nextMove.row+commits.nextMove.column, false)     
 }
@@ -58,7 +58,8 @@ function give_figure(given_figure_id){
 }
 /* This function makes move by setting figure as background image */
 function make_move(cell_id, player_turn){
-    if(active_figure_id!==0){
+    console.log(cell_id);
+    if(active_figure_id!==-1){
         var picture_path="url('assets/images/" + active_figure_id;
         picture_path+=".png')"
         active_figure=document.getElementById(active_figure_id);
@@ -72,7 +73,7 @@ function make_move(cell_id, player_turn){
     if(player_turn){
         computer_move(active_figure_id, cell_id);
     }
-    active_figure_id=0;
+    active_figure_id=-1;
 }
 
   function rules(){
@@ -85,7 +86,7 @@ async function computer_move(piece, cell){
     piecee_id = piece.replace(/[^0-9]/g,'');
     const data = {
         "player": player_name,
-        "move" : { "row" : celll_id[1] , "column" : celll_id[0], "piece" : piecee_id}
+        "move" : { "row" : Number(celll_id[0]) , "column" : Number(celll_id[1]), "piece" : Number(piecee_id)}
         }
     const response = await fetch(url, {
         method: 'PUT',
