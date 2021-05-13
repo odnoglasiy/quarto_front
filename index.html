@@ -1,121 +1,21 @@
 <!DOCTYPE HTML>
 <html lang = 'en'>
     <head>
+        <meta charset = 'UTF-8'>        
         <script src="index.js"></script>
-        <meta charset = 'UTF-8'>
         <link rel = "stylesheet" href="assets/css/style.css">
-        <title>Quarto</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
+        <title>Quarto</title>
     </head>
-    <body onload="set_figures()">
-        <div class="header">
-            <div class="container">
-                <div class="header__inner">
-                    <div class="header__logo">QUARTO</div>
-                    <button class="rules" onclick="rules()">Rules</button>
-                </div>
-            </div>
+    <body>
+        <div class="choose__intro">
+            <div class="choose__logo">QUARTO</div>
+            <button class="dif__button" onclick="location.href='random.html'">Random</button>
+            <button class="dif__button" onclick="location.href='simple.html'">Simple</button>
+            <button class="dif__button" onclick="alert('Чо кого, сучара? Жди обновы!')">Hard</button>
+            <button class="dif__button" onclick="alert('Чо кого, сучара? Жди обновы!')">Nikolya</button>
         </div>
-<div class="intro">
-    <table class="chess">
-        <tr>
-            <th></th>
-            <th>00</th>
-            <th>01</th>
-        </tr>
-        <tr>
-            <th>00</th>
-            <td id="figure0" class="black"></td>
-            <td id="figure4" class="black"></td> 
-        </tr>		
-        <tr>
-            <th>01</th>
-            <td id="figure1" class="black"></td>
-            <td id="figure5" class="black"></td>
-        </tr>	
-        <tr>
-            <th>10</th>
-            <td id="figure2" class="black"></td>
-            <td id="figure6" class="black"></td>
-        </tr>	
-        <tr>
-            <th>11</th>
-            <td id="figure3" class="black"></td>
-            <td id="figure7" class="black"></td>
-        </tr>	
-    </table>
-        <div class="board">
-            <table id= "chess_board" class="chess">
-                <tr>
-                    <th></th>
-                    <th>a</th>
-                    <th>b</th>
-                    <th>c</th>
-                    <th>d</th>
-                   </tr>
-                <tr>
-                    <th>1</th>
-                    <td class="black" id="cell00"></td>
-                    <td class="white" id="cell01"></td>
-                    <td class="black" id="cell02"></td>
-                    <td class="white" id="cell03"></td>
-                    <th>1</th>
-                </tr>		
-                <tr>
-                    <th>2</th>
-                    <td class="white" id="cell10"></td>
-                    <td class="black" id="cell11"></td>
-                    <td class="white" id="cell12"></td>
-                    <td class="black" id="cell13"></td>
-                    <th>2</th>
-                </tr>	
-                <tr>
-                    <th>3</th>
-                    <td class="black" id="cell20"></td>
-                    <td class="white" id="cell21"></td>
-                    <td class="black" id="cell22"></td>
-                    <td class="white" id="cell23"></td>
-                    <th>3</th>
-                </tr>	
-                <tr>
-                    <th>4</th>
-                    <td class="white" id="cell30"></td>
-                    <td class="black" id="cell31"></td>
-                    <td class="white" id="cell32"></td>
-                    <td class="black" id="cell33"></td>
-                    <th>4</th>
-                </tr>	
-            </table>
-        </div>
-        <table class="chess">
-            <tr>
-                <th>10</th>
-                <th>11</th>
-               </tr>
-            <tr>
-                <td id="figure8" class="white"></td>
-                <td id="figure12" class="white"></td>
-                <th>00</th>
-            </tr>		
-            <tr>
-                <td id="figure9" class="white"></td>
-                <td id="figure13" class="white"></td>
-                <th>01</th>
-            </tr>	
-            <tr>
-                <td id="figure10" class="white"></td>
-                <td id="figure14" class="white"></td>
-                <th>10</th>
-            </tr>	
-            <tr>
-                <td id="figure11" class="white"></td>
-                <td id="figure15" class="white"></td>
-                <th>11</th>
-            </tr>	
-        </table>
-</div>
-           
     </body>
 </html>

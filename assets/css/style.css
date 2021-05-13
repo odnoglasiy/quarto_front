@@ -107,3 +107,47 @@ body {
 .white{
     background: #d1dced;
 }
+
+.choose__logo{
+    margin-top: 30vh;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: Roboto;
+    vertical-align: center;
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+}
+.choose__intro{
+    vertical-align: center;
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+
+
+    background-color: #e7fcff;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.dif__button{
+    
+    text-align: center;
+    width: 40vh;
+    height: 8vh;
+    background-color: #d1dced;
+    border: 3px solid #000;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 3px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.dif__button:hover{
+    transition: background .1s linear, color .1s linear;
+    background-color: #6786b8;
+    color: white;
+}

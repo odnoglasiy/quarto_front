@@ -8,7 +8,7 @@ function i_to_binary(r){
 }
 
 /*This function set all images to figure's cells and set to all TD's them functions*/
-function set_figures(){
+function set_figures(game_difficulty){
     var figure_id,pic_link,figure;
     for(var i=0;i<16;i++){
         figure_id="figure"+i;
@@ -21,12 +21,12 @@ function set_figures(){
 
     var chess_cells = document.getElementById('chess_board').getElementsByTagName('TD');
     for(var i=0;i<chess_cells.length;i++) chess_cells[i].onclick = function(){make_move(this.id, true)}
-    start_game();
+    start_game(game_difficulty);
 }
 
-async function start_game(){
+async function start_game(game_difficulty){
     var url = "http://localhost:8080/game/new"
-    const data = {single: {player : player_name}}
+    const data = {single: {player : player_name, level: game_difficulty}}
     const response = await fetch(url, {
         method: 'post',
         mode: "cors",
