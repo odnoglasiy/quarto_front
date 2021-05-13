@@ -84,6 +84,7 @@ async function computer_move(piece, cell){
     var url = "http://localhost:8080/game/"+game_id+"/makemove"
     cell_id = cell.replace(/[^0-9]/g,'');
     piece_id = piece.replace(/[^0-9]/g,'');
+
     const data = {
         "player": player_name,
         "move" : { "row" : Number(cell_id[0]) , "column" : Number(cell_id[1]), "piece" : Number(piece_id)}
@@ -97,8 +98,18 @@ async function computer_move(piece, cell){
         }
         
       })
-      
+
       let commits = await response.json();
+      if(commits.gameResult){
+          if(commits.gameResult.winner) {if(confirm("You win!Want to play again?")) location.href=location.href}
+          else {
           active_figure_id="figure"+commits.nextMove.piece;
-          make_move("cell"+commits.nextMove.row+commits.nextMove.column)            
+          make_move("cell"+commits.nextMove.row+commits.nextMove.column) 
+          setTimeout(()=>{if(confirm("Your opponent wins!Want to play again?")) location.href=location.href},100)
+         }
+      }
+      else{
+        active_figure_id="figure"+commits.nextMove.piece;
+        make_move("cell"+commits.nextMove.row+commits.nextMove.column)   
+      }
 }
