@@ -1,4 +1,4 @@
-    var active_figure_id,previous_figure_id=0,player_name = "Pirate",game_id="lol";
+    var active_figure_id="figure17",previous_figure_id="figure17",player_name = "Pirate",game_id="lol";
 
 /*This function transform i into 4-digit id*/
 function i_to_binary(r){
@@ -49,9 +49,9 @@ async function start_game(){
 
 /* This function give clicked cell green color and set active id for make_move function */
 function give_figure(given_figure_id){
-    if(active_figure_id!==0) previous_figure_id=active_figure_id;
-    //if(previous_figure_id/1000 <1) document.getElementById(previous_figure_id).style.backgroundColor="#6786b8";
-    //else if(previous_figure_id) document.getElementById(previous_figure_id).style.backgroundColor="#d1dced";
+    if(active_figure_id.replace(/[^0-9]/g,'')!=17) previous_figure_id=active_figure_id;
+    if(previous_figure_id.replace(/[^0-9]/g,'')<8) document.getElementById(previous_figure_id).style.backgroundColor="#6786b8";
+    else if(previous_figure_id.replace(/[^0-9]/g,'')<16) document.getElementById(previous_figure_id).style.backgroundColor="#d1dced";
 
     active_figure_id=given_figure_id;
     document.getElementById(given_figure_id).style.backgroundColor="#6dff7b";
@@ -73,7 +73,7 @@ function make_move(cell_id, player_turn){
     if(player_turn){
         computer_move(active_figure_id, cell_id);
     }
-    active_figure_id=-1;
+    active_figure_id="figure17";
 }
 
   function rules(){
@@ -82,11 +82,11 @@ function make_move(cell_id, player_turn){
 
 async function computer_move(piece, cell){
     var url = "http://localhost:8080/game/"+game_id+"/makemove"
-    celll_id = cell.replace(/[^0-9]/g,'');
-    piecee_id = piece.replace(/[^0-9]/g,'');
+    cell_id = cell.replace(/[^0-9]/g,'');
+    piece_id = piece.replace(/[^0-9]/g,'');
     const data = {
         "player": player_name,
-        "move" : { "row" : Number(celll_id[0]) , "column" : Number(celll_id[1]), "piece" : Number(piecee_id)}
+        "move" : { "row" : Number(cell_id[0]) , "column" : Number(cell_id[1]), "piece" : Number(piece_id)}
         }
     const response = await fetch(url, {
         method: 'PUT',
