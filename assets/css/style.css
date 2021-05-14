@@ -21,7 +21,7 @@ body {
 }
 .header {
     width: 100%;
-    padding-top: 30px;
+    padding-top: 20px;
     position: absolute;
     top: 0;
     left: 0;
@@ -35,6 +35,16 @@ body {
     font-family: Roboto;
     display: inline-flex;
     align-items: center;
+}
+
+.header__logo:hover {
+    color:#6786b8;
+}
+
+.logo_pic{
+    border:0;
+    width:20px;
+    height:20px;
 }
 
 .rules{
