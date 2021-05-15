@@ -7,6 +7,16 @@ function i_to_binary(r){
     return r;
 }
 
+function human_translate(cell){
+    console.log(cell[1])
+    if(cell[1] == 0) cell="a"+cell[0]
+    else if(cell[1] == 1) cell="b"+cell[0]
+    else if(cell[1] == 2) cell="c"+cell[0]
+    else if(cell[1] == 3) cell="d"+cell[0]
+    console.log(cell[1])
+    return cell
+}
+
 /*This function set all images to figure's cells and set to all TD's them functions*/
 function set_figures(game_difficulty){
     var figure_id,pic_link,figure;
@@ -58,7 +68,6 @@ function give_figure(given_figure_id){
 }
 /* This function makes move by setting figure as background image */
 function make_move(cell_id, player_turn){
-    console.log(cell_id);
     if(active_figure_id!==-1){
         var picture_path="url('assets/images/" + active_figure_id;
         picture_path+=".png')"
@@ -68,8 +77,10 @@ function make_move(cell_id, player_turn){
         active_figure.style.backgroundImage="";
         active_cell.style.pointerEvents="none";
         active_figure.style.pointerEvents="none";
-        active_figure.style.backgroundColor="#2e3b51";   
+        active_figure.style.backgroundColor="#2e3b51";  
+        refresh_status(cell_id,active_figure_id)
     }
+
     if(player_turn){
         computer_move(active_figure_id, cell_id);
     }
@@ -92,7 +103,6 @@ async function computer_move(piece, cell){
     var url = "http://localhost:8080/game/"+game_id+"/makemove"
     cell_id = cell.replace(/[^0-9]/g,'');
     piece_id = piece.replace(/[^0-9]/g,'');
-
     const data = {
         "player": player_name,
         "move" : { "row" : Number(cell_id[0]) , "column" : Number(cell_id[1]), "piece" : Number(piece_id)}
@@ -139,4 +149,10 @@ function end_game(commits){
     document.getElementsByClassName("chess")[0].style.pointerEvents="none";
     document.getElementsByClassName("chess")[1].style.pointerEvents="none";
     document.getElementById("status").innerHTML="Good Game, Well Played!"
+}
+
+function refresh_status(cell_id,figure_id){
+    cell_id = human_translate(String(cell_id.replace(/[^0-9]/g,'')));
+    figure_id = i_to_binary(Number(figure_id.replace(/[^0-9]/g,'')));
+    document.getElementById("status").innerHTML="Computer plays "+figure_id+" to "+cell_id;
 }
