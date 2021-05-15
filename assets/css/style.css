@@ -18,23 +18,24 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-flow: row wrap;
+
 }
 .header {
     width: 100%;
     padding-top: 20px;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     z-index: 1000;
 }
 
-.header__logo {
+
+.header__logo { 
     font-size: 30px;
     font-weight: 700;
     font-family: Roboto;
-    display: inline-flex;
-    align-items: center;
 }
 
 .header__logo:hover {
@@ -43,15 +44,14 @@ body {
     transition: color 0.3s;
 }
 
-.logo_pic{
-    border:0;
-    width:20px;
-    height:20px;
+.status{
+    padding: 10px 20px 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    margin: auto 10px ;
+    font-size: 17px;
 }
 
 .rules{
-    display: inline-flex;
-    float: right;
     background-color: #d1dced;
     border: 3px solid #000;
     border-radius: 10px;
@@ -72,6 +72,12 @@ body {
     background-size: 100% 100%;
     color: white;
     cursor: pointer;
+}
+
+.logo_pic{
+    border:0;
+    width:20px;
+    height:20px;
 }
 .intro {
     display: flex;
