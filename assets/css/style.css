@@ -71,7 +71,7 @@ body {
     color: white;
     cursor: pointer;
 }
-
+/*<--- Main part style --->*/
 .intro {
     display: flex;
     flex-direction: row;
