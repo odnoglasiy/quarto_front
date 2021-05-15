@@ -12,8 +12,9 @@ body {
 *:after {
     box-sizing: border-box;
 }
-
+/*<!--- Header style ---!>*/
 .container {
+    padding-top:20px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -26,7 +27,6 @@ body {
 }
 .header {
     width: 100%;
-    padding-top: 20px;
     position: absolute;
     z-index: 1000;
 }
@@ -45,9 +45,7 @@ body {
 }
 
 .status{
-    padding: 10px 20px 10px 20px;
     font-family: 'Montserrat', sans-serif;
-    margin: auto 10px ;
     font-size: 17px;
 }
 
@@ -74,11 +72,6 @@ body {
     cursor: pointer;
 }
 
-.logo_pic{
-    border:0;
-    width:20px;
-    height:20px;
-}
 .intro {
     display: flex;
     flex-direction: row;
