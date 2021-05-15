@@ -77,11 +77,16 @@ function make_move(cell_id, player_turn){
 }
 
   function rules(){
-        var modal = document.getElementById("myModal");
+       var modal = document.getElementById("myModal");
         var span = document.getElementsByClassName("close")[0];
         modal.style.display = "block";
         span.onclick=function() {  modal.style.display = "none";}
-      }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+    }
+}
+}
 
 async function computer_move(piece, cell){
     var url = "http://localhost:8080/game/"+game_id+"/makemove"
@@ -104,16 +109,28 @@ async function computer_move(piece, cell){
 
       let commits = await response.json();
       if(commits.gameResult){
-          if(commits.gameResult.is_draw) if(confirm("Draw! Do you want to play again?")) location.href=location.href
-          if(commits.gameResult.winner) {if(confirm("You win! Do you want to play again?")) location.href=location.href}
-          else {
-          active_figure_id="figure"+commits.nextMove.piece;
-          make_move("cell"+commits.nextMove.row+commits.nextMove.column) 
-          setTimeout(()=>{if(confirm("Your opponent wins! Do you want to play again?")) location.href=location.href},100)
-         }
+
+        if(commits.gameResult.is_draw) open_menu("Draw!")
+        else if(commits.gameResult.winner) open_menu("You win!")
+        else {
+            active_figure_id="figure"+commits.nextMove.piece;
+            make_move("cell"+commits.nextMove.row+commits.nextMove.column)   
+            open_menu("You lose")
+        }
       }
       else{
         active_figure_id="figure"+commits.nextMove.piece;
         make_move("cell"+commits.nextMove.row+commits.nextMove.column)   
       }
+}
+
+function watch_history(){
+
+}
+
+function open_menu(condition){
+    document.getElementById("menu_win").innerHTML=condition;
+    for(i=8;i<16;i++) document.getElementsByClassName("chess")[2].style.display="none"
+    document.getElementById("modal_menu").style.display="block"
+    document.getElementById("modal_menu").style.width=document.getElementsByClassName("chess")[2].style.width
 }
