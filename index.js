@@ -8,12 +8,11 @@ function i_to_binary(r){
 }
 
 function human_translate(cell){
-    console.log(cell[1])
-    if(cell[1] == 0) cell="a"+cell[0]
-    else if(cell[1] == 1) cell="b"+cell[0]
-    else if(cell[1] == 2) cell="c"+cell[0]
-    else if(cell[1] == 3) cell="d"+cell[0]
-    console.log(cell[1])
+    
+    if(cell[1] == 0) cell="a"+(Number(cell[0])+1)
+    else if(cell[1] == 1) cell="b"+(Number(cell[0])+1)
+    else if(cell[1] == 2) cell="c"+(Number(cell[0])+1)
+    else if(cell[1] == 3) cell="d"+(Number(cell[0])+1)
     return cell
 }
 
