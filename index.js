@@ -1,5 +1,5 @@
     var active_figure_id="figure17",previous_figure_id="figure17",player_name = "Pirate",game_id="lol";
-
+    let moves = [];
 /*This function transform i into 4-digit id*/
 function i_to_binary(r){
     r=r.toString(2);
@@ -127,14 +127,20 @@ async function computer_move(piece, cell){
 }
 
 function watch_history(){
-
+    document.getElementsByClassName("chess")[0].style.display="none"
+    document.getElementById("moves_menu").style.display="block"
+    for(i=0;i<(moves.length/2);i++){
+         document.getElementById("move"+(i+1)).textContent=""+moves[i*2]+" to "+moves[i*2+1]
+    }
+    for(i=moves.length/2;i<16;i++) {
+        document.getElementById("move"+(i+1)).style.display="none"
+    }
 }
 
 function open_menu(condition){
     document.getElementById("menu_win").innerHTML=condition;
-    for(i=8;i<16;i++) document.getElementsByClassName("chess")[2].style.display="none"
+    document.getElementsByClassName("chess")[2].style.display="none"
     document.getElementById("modal_menu").style.display="block"
-    document.getElementById("modal_menu").style.width=document.getElementsByClassName("chess")[2].style.width
 }
 
 function end_game(commits){
@@ -159,5 +165,6 @@ function end_game(commits){
 function refresh_status(cell_id,figure_id){
     cell_id = human_translate(String(cell_id.replace(/[^0-9]/g,'')));
     figure_id = i_to_binary(Number(figure_id.replace(/[^0-9]/g,'')));
+    moves.push(figure_id,cell_id)
     document.getElementById("status").innerHTML="Computer plays "+figure_id+" to "+cell_id;
 }
