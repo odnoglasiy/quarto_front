@@ -138,12 +138,18 @@ function open_menu(condition){
 }
 
 function end_game(commits){
-    if(commits.gameResult.is_draw) open_menu("Draw!")
+    if(commits.gameResult.isDraw) open_menu("Draw!")
     else if(commits.gameResult.winner) open_menu("You win!")
     else {
         active_figure_id="figure"+commits.nextMove.piece;
         make_move("cell"+commits.nextMove.row+commits.nextMove.column,false)   
         open_menu("You lose")
+    }
+    if(commits.gameResult.winningLine){
+    if(commits.gameResult.winningLine=="leftDiagonal") for(i=0;i<4;i++) document.getElementById("cell"+i+i).style.backgroundColor="green";
+    else if(commits.gameResult.winningLine=="rightDiagonal") for(i=0;i<4;i++) document.getElementById("cell"+(3-i)+i).style.backgroundColor="green";
+    else if(commits.gameResult.winningLine.row>-1) for(i=0;i<4;i++) document.getElementById(("cell"+commits.gameResult.winningLine.row)+i).style.backgroundColor="green";
+    else if(commits.gameResult.winningLine.column>-1) for(i=0;i<4;i++) document.getElementById("cell"+i+commits.gameResult.winningLine.column).style.backgroundColor="green";
     }
     document.getElementsByClassName("chess")[0].style.pointerEvents="none";
     document.getElementsByClassName("chess")[1].style.pointerEvents="none";
