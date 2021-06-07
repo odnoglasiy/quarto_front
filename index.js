@@ -18,10 +18,10 @@ function human_translate(cell){
 
 /*This function set all images to figure's cells and set to all TD's them functions*/
 function set_figures(game_difficulty){
-    game_dif=game_difficulty;
-    document.getElementsByClassName("game_board")[0].style.display="block";
-    document.getElementsByClassName("choose__intro")[0].style.display="none";
-    var figure_id,pic_link,figure;
+    document.getElementById("status").innerHTML="Your move!"
+    if(game_difficulty) game_dif=game_difficulty
+    document.getElementsByClassName("chess")[0].style.pointerEvents="auto";
+    document.getElementsByClassName("chess")[1].style.pointerEvents="auto";
     for(var i=0;i<16;i++){
         figure_id="figure"+i;
         pic_link="url('assets/images/" + figure_id;
@@ -34,7 +34,32 @@ function set_figures(game_difficulty){
     for(var i=0;i<chess_cells.length;i++) {
         chess_cells[i].onclick = function(){make_move(this.id, true)}
     }
-    start_game(game_difficulty);
+    var chess_cells = document.getElementsByTagName('TD');
+    for(var i=0;i<chess_cells.length;i++){
+        chess_cells[i].style.className="chess td";
+        chess_cells[i].style.backgroundImage="";
+        chess_cells[i].style.pointerEvents="auto";
+        
+        if(chess_cells[i].className=="black") chess_cells[i].style.backgroundColor="#6786b8";
+        else chess_cells[i].style.backgroundColor="#d1dced"
+    }
+    for(var i=0;i<16;i++){
+        figure_id="figure"+i;
+        pic_link="url('assets/images/" + figure_id;
+        pic_link+=".png')"
+        figure=document.getElementById(figure_id);
+        figure.style.backgroundImage=pic_link;
+        figure.onclick = function(){give_figure(this.id)};
+        document.getElementById("modal_menu").style.display="none";
+        document.getElementById("moves_menu").style.display="none";
+        document.getElementsByClassName("dif_menu")[0].style.display="none"
+        document.getElementsByClassName("chess")[0].style.display="block"
+        document.getElementsByClassName("game_board")[0].style.display="block"
+        document.getElementsByClassName("chess")[2].style.display="block"
+
+    }
+    moves=[];
+    start_game(game_dif)
 }
 
 async function start_game(game_difficulty){
@@ -155,10 +180,10 @@ function open_menu(condition){
 }
 
 function end_game(commits){
-    if(commits.gameResult.isDraw) open_menu("Draw!")
-    else if(commits.gameResult.winner) open_menu("You win!")
+    if(commits.gameResult.winner) open_menu("You win!")
     else {
-        active_figure_id="figure"+commits.nextMove.piece;
+        if(commits.gameResult.isDraw) open_menu("Draw!")
+        else active_figure_id="figure"+commits.nextMove.piece;
         make_move("cell"+commits.nextMove.row+commits.nextMove.column,false)   
         open_menu("You lose")
     }
@@ -189,30 +214,8 @@ function show_move(move_id){
     }
 }
 
-function play_again(){
-    document.getElementsByClassName("chess")[0].style.pointerEvents="auto";
-    document.getElementsByClassName("chess")[1].style.pointerEvents="auto";
-    var chess_cells = document.getElementsByTagName('TD');
-    for(var i=0;i<chess_cells.length;i++){
-        chess_cells[i].style.backgroundImage="";
-        chess_cells[i].style.pointerEvents="auto";
-        
-        if(chess_cells[i].className=="black") chess_cells[i].style.backgroundColor="#6786b8";
-        else chess_cells[i].style.backgroundColor="#d1dced"
-    }
-    for(var i=0;i<16;i++){
-        figure_id="figure"+i;
-        pic_link="url('assets/images/" + figure_id;
-        pic_link+=".png')"
-        figure=document.getElementById(figure_id);
-        figure.style.backgroundImage=pic_link;
-        figure.onclick = function(){give_figure(this.id)};
-        document.getElementById("modal_menu").style.display="none";
-        document.getElementById("moves_menu").style.display="none";
-        document.getElementsByClassName("chess")[0].style.display="block"
-        document.getElementsByClassName("chess")[2].style.display="block"
+function back_to_menu(){
+    document.getElementsByClassName("dif_menu")[0].style.display="block";
+    document.getElementsByClassName("game_board")[0].style.display="none";
 
-    }
-    moves=[];
-    start_game(game_dif)
 }

@@ -174,13 +174,14 @@
         <div id="modal_menu" class="modal_menu">
             <div class="menu_content" style="text-align: center;">
                 <H1 id="menu_win">Draw!</H1>
-                <button class="menu_button" onclick="play_again()">Play again</button>
+                <button class="menu_button" onclick="set_figures()">Play again</button>
                 <button class="menu_button" onclick="watch_history()">Watch history</button>
-                <button class="menu_button" onclick="location.href='index.html'">Difficulty menu</button>
+                <button class="menu_button" onclick="back_to_menu()">Difficulty menu</button>
               </div>
             </div>
             </div>
         </div>
+        <div class="dif_menu">
             <div class="choose__intro">
             <div class="choose__logo">QUARTO</div>
             <button class="dif__button" onclick="set_figures('random')">Random</button>
@@ -189,6 +190,7 @@
             <button class="dif__button" onclick="set_figures('nicolas')">Nicolas</button>
             <button class="dif__button" onclick="set_figures('agronico')">AgroNico</button>
         </div>
+    </div>
     
     </body>
 </html>
