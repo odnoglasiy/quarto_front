@@ -165,8 +165,8 @@ function watch_history(){
     document.getElementsByClassName("chess")[0].style.display="none"
     document.getElementById("moves_menu").style.display="block"
     for(i=0;i<(moves.length/2);i++){
-         document.getElementById("move"+(i+1)).textContent=""+moves[i*2]+" to "+moves[i*2+1]
-         document.getElementById("move"+(i+1)).onclick=function(){show_move(this.id)}
+         document.getElementById("move"+(i+1)).textContent=""+i_to_binary(Number(moves[i*2]))+" to "+human_translate(moves[i*2+1])
+         document.getElementById("move"+(i+1)).onclick=function(){show_move(this.id.replace(/[^0-9]/g,''))}
     }
     for(i=moves.length/2;i<16;i++) {
         document.getElementById("move"+(i+1)).style.display="none"
@@ -199,9 +199,10 @@ function end_game(commits){
 }
 
 function refresh_status(cell_id,figure_id){
+    moves.push(figure_id.replace(/[^0-9]/g,''),cell_id.replace(/[^0-9]/g,''))
     cell_id = human_translate(String(cell_id.replace(/[^0-9]/g,'')));
     figure_id = i_to_binary(Number(figure_id.replace(/[^0-9]/g,'')));
-    moves.push(figure_id,cell_id)
+    
     document.getElementById("status").innerHTML="Computer plays "+figure_id+" to "+cell_id;
 }
 
@@ -212,6 +213,11 @@ function show_move(move_id){
         if(chess_cells[i].className=="black") chess_cells[i].style.backgroundColor="#6786b8";
         else chess_cells[i].style.backgroundColor="#d1dced"
     }
+    //("figure"+moves[move_id*2],"cell" + moves[move_id*2])
+    for(i=0;i<move_id;i++){
+        document.getElementById("cell"+moves[i*2+1]).style.backgroundImage="url(assets/images/figure"+moves[i*2]+".png)"
+    }
+    
 }
 
 function back_to_menu(){
