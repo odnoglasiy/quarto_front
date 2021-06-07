@@ -1,4 +1,4 @@
-    var active_figure_id="figure17",previous_figure_id="figure17",player_name = "Pirate",game_id="",game_dif;
+    var active_figure_id="figure17",previous_figure_id="figure17",player_name = "Pirate",game_id="",game_dif,prev_result;
     let moves = [];
 /*This function transform i into 4-digit id*/
 function i_to_binary(r){
@@ -187,12 +187,7 @@ function end_game(commits){
         make_move("cell"+commits.nextMove.row+commits.nextMove.column,false)   
         open_menu("You lose")
     }
-    if(commits.gameResult.winningLine){
-    if(commits.gameResult.winningLine=="leftDiagonal") for(i=0;i<4;i++) document.getElementById("cell"+i+i).style.backgroundColor="green";
-    else if(commits.gameResult.winningLine=="rightDiagonal") for(i=0;i<4;i++) document.getElementById("cell"+(3-i)+i).style.backgroundColor="green";
-    else if(commits.gameResult.winningLine.row>-1) for(i=0;i<4;i++) document.getElementById(("cell"+commits.gameResult.winningLine.row)+i).style.backgroundColor="green";
-    else if(commits.gameResult.winningLine.column>-1) for(i=0;i<4;i++) document.getElementById("cell"+i+commits.gameResult.winningLine.column).style.backgroundColor="green";
-    }
+    winning_line(commits.gameResult)
     document.getElementsByClassName("chess")[0].style.pointerEvents="none";
     document.getElementsByClassName("chess")[1].style.pointerEvents="none";
     document.getElementById("status").innerHTML="Good Game, Well Played!"
@@ -216,6 +211,7 @@ function show_move(move_id){
     //("figure"+moves[move_id*2],"cell" + moves[move_id*2])
     for(i=0;i<move_id;i++){
         document.getElementById("cell"+moves[i*2+1]).style.backgroundImage="url(assets/images/figure"+moves[i*2]+".png)"
+        if(move_id==moves.length/2) winning_line("");
     }
     
 }
@@ -224,4 +220,14 @@ function back_to_menu(){
     document.getElementsByClassName("dif_menu")[0].style.display="block";
     document.getElementsByClassName("game_board")[0].style.display="none";
 
+}
+
+function winning_line(gameResult){
+    if(gameResult!="") prev_result=gameResult
+    if(prev_result.winningLine){
+        if(prev_result.winningLine=="leftDiagonal") for(i=0;i<4;i++) document.getElementById("cell"+i+i).style.backgroundColor="green";
+        else if(prev_result.winningLine=="rightDiagonal") for(i=0;i<4;i++) document.getElementById("cell"+(3-i)+i).style.backgroundColor="green";
+        else if(prev_result.winningLine.row>-1) for(i=0;i<4;i++) document.getElementById(("cell"+prev_result.winningLine.row)+i).style.backgroundColor="green";
+        else if(prev_result.winningLine.column>-1) for(i=0;i<4;i++) document.getElementById("cell"+i+prev_result.winningLine.column).style.backgroundColor="green";
+        }
 }
