@@ -188,8 +188,10 @@ function end_game(commits){
         open_menu("You lose")
     }
     winning_line(commits.gameResult)
-    document.getElementsByClassName("chess")[0].style.pointerEvents="none";
-    document.getElementsByClassName("chess")[1].style.pointerEvents="none";
+    for(i=0;i<=15;i++){
+    document.getElementsByClassName("chess")[0][i].style.pointerEvents= "none";
+    document.getElementsByClassName("chess")[1][i].style.pointerEvents="none";
+    }
     document.getElementById("status").innerHTML="Good Game, Well Played!"
 }
 
